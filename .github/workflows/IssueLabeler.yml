@@ -1,0 +1,15 @@
+name: Add Labels to Issues on PR Merge
+on:
+  pull_request:
+    types: [ closed ]
+    branches: [ main, SDEV, STEST, PDEV, PTEST ]
+jobs:
+  merge_job:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add label
+        uses: andymckay/labeler@master
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          add-labels: "deployed: SDEV"
