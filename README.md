@@ -1,3 +1,3 @@
 # myPublicPlayground
 
-[X] - Check Box
+[] - Check Box
