@@ -1,8 +1,12 @@
 name: Add Labels to Issues on PR Merge
 on:
-  pull_request:
-    types: [ closed ]
-    branches: [ main, SDEV, STEST, PDEV, PTEST ]
+  push:
+    branches:
+      - main
+      - SDEV
+      - STEST
+      - PDEV
+      - PTEST
 jobs:
   merge_job:
     runs-on: ubuntu-latest
