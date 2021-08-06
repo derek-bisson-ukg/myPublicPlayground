@@ -30,4 +30,4 @@ jobs:
       run: echo "Hello ${{ github.event.inputs.name }}"
       
     - name: ENV
-      run: run
+      run: env
