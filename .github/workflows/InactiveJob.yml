@@ -1,0 +1,30 @@
+# This workflow calls a public action that processes and labels inactive PRs (2 days)
+
+name: Process and Label Inactive PRs
+
+# Controls when the workflow will run
+on:
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v4
+        with:
+          # label = status:Inactive
+          stale-issue-label: status:Inactive
+          stale-pr-label: status:Inactive
+          # run once a day at 8pm
+          start-date: '2021-05-08T00:00:00Z'
+          # comment and days before input config
+          stale-pr-message: '🕘 This pull-request has been open without activity for 2 days. Adding the Inactive label to bring attention 🙋'
+          days-before-pr-stale: 2
+          days-before-issue-stale: 14
+          stale-issue-message: '🕘 This issue has been open without activity for 14 days. Adding the Inactive label to bring attention 🙋'
+          days-before-close: 365
+          # exemption input config
+          exempt-issue-labels: status:Draft
+          exempt-pr-labels: status:Draft
